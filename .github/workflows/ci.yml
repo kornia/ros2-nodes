@@ -1,0 +1,32 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    container: ros:kilted
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install dependencies
+        run: |
+          apt-get update
+          apt-get install -y --no-install-recommends curl libclang-dev pkg-config build-essential \
+            ros-kilted-sensor-msgs ros-kilted-nav-msgs ros-kilted-geometry-msgs ros-kilted-tf2-msgs
+          curl -sSf https://sh.rustup.rs | sh -s -- -y --default-toolchain 1.89.0 --profile minimal -c clippy,rustfmt
+      - name: fmt
+        shell: bash
+        run: ~/.cargo/bin/cargo fmt --all --check
+      - name: clippy
+        shell: bash
+        run: |
+          source /opt/ros/kilted/setup.bash
+          ~/.cargo/bin/cargo clippy --workspace --all-targets --locked -- -D warnings
+      - name: test
+        shell: bash
+        run: |
+          source /opt/ros/kilted/setup.bash
+          ~/.cargo/bin/cargo test --workspace --locked

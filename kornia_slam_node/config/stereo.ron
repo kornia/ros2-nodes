@@ -1,0 +1,6 @@
+// kornia-slam system for a rectified stereo pair; every other setting takes
+// its default (see kornia-slam's configs/euroc.ron for the full list).
+(
+    version: 1,
+    sensors: ( cameras: Stereo ),
+)

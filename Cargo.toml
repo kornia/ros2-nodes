@@ -1,0 +1,22 @@
+[workspace]
+resolver = "3"
+members = ["kornia_slam_node"]
+
+[workspace.package]
+version = "0.1.0"
+edition = "2024"
+rust-version = "1.89"
+license = "Apache-2.0"
+repository = "https://github.com/kornia/ros2-nodes"
+
+[workspace.dependencies]
+# Need a sourced ROS 2 installation whose messages include Rust bindings.
+rclrs = "0.8"
+ros-env = "0.3"
+
+kornia-3d = "0.2.0"
+kornia-algebra = "0.2.0"
+kornia-image = "0.2.0"
+kornia-imgproc = "0.2.0"
+
+thiserror = "2"

@@ -1,0 +1,5 @@
+// Monocular: only the left topics are read, and the map has no metric scale.
+(
+    version: 1,
+    sensors: ( cameras: Mono ),
+)

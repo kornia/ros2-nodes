@@ -1,0 +1,5 @@
+// Stereo visual-inertial; needs the `camera_to_imu` parameter.
+(
+    version: 1,
+    sensors: ( cameras: Stereo, imu: true ),
+)

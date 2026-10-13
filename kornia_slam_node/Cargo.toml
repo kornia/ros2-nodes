@@ -1,0 +1,23 @@
+[package]
+name = "kornia_slam_node"
+description = "ROS 2 node running kornia-slam visual and visual-inertial odometry"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+publish = false
+
+[dependencies]
+# kornia-slam and kornia-sensors share one git source; bump the rev together.
+kornia-slam = { git = "https://github.com/kornia/kornia-slam", rev = "81b1b24cfc8d43f24723f7caf123b8ebae2064a9", features = ["serde"] }
+kornia-sensors = { git = "https://github.com/kornia/kornia-slam", rev = "81b1b24cfc8d43f24723f7caf123b8ebae2064a9" }
+kornia-3d.workspace = true
+kornia-algebra.workspace = true
+kornia-image.workspace = true
+kornia-imgproc.workspace = true
+
+rclrs.workspace = true
+ros-env.workspace = true
+
+thiserror.workspace = true
